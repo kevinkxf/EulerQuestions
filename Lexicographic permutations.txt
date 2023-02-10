@@ -1,0 +1,43 @@
+static int getFactor(int n)
+         {
+             int intReturn = 1;
+             while (n >= 1)
+             {
+                 intReturn *= n;
+                 n--;
+             }
+             return intReturn;
+         }
+
+
+
+int million = 1000000;
+
+            List<int> numbers = new List<int>() {0,1,2,3,4,5,6,7,8,9 };
+            //List<int> numbers = new List<int>() {3,4,5,6};
+
+            int mod = 0;
+            int division = 0;
+            List<int> lResult = new List<int>();
+            for (int i = numbers.Count; i >= 2; i--)
+            {
+                if(million<=0)break;
+                int factor = getFactor(i-1);
+                mod = million % factor;
+                division = (million) / factor;
+                int index = mod == 0 ? division : division + 1;
+                    // Console.WriteLine("million:" + million.ToString());
+                    // Console.WriteLine("factor:" + factor.ToString());
+                    // Console.WriteLine("mod:" + mod.ToString());
+                    // Console.WriteLine("division:" + division.ToString());
+                    // Console.WriteLine("number got:" + numbers[index-1].ToString());
+                million -=  mod>0?division*factor:(division-1)*factor;
+                    // Console.WriteLine("million left:" + million.ToString());
+                    // Console.WriteLine("------------------");
+                lResult.Add(numbers[index-1]);
+                numbers.RemoveAt(index-1);
+                
+
+            }
+            lResult = lResult.Concat(numbers).ToList();
+            Console.WriteLine(String.Join(",", lResult));

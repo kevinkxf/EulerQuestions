@@ -1,0 +1,23 @@
+public static long minGongBeiShu(long n1, long n2)
+        {
+            long temp = Math.Max(n1, n2);
+            n2 = Math.Min(n1, n2);//n2
+            n1 = temp;//n1
+            long product = n1 * n2;//
+            while (n2 != 0)
+            {
+                n1 = n1 > n2 ? n1 : n2;//
+                long m = n1 % n2;
+                n1 = n2;
+                n2 = m;
+            }
+            return (product / n1);//
+        }
+
+
+
+long a = 20;
+        for(int i=19;i>=2;i--){
+            a = minGongBeiShu(a, i);
+        }
+        Console.WriteLine(a);

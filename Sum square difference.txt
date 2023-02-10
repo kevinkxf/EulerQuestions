@@ -1,0 +1,12 @@
+ int n = 100;
+        long a = 0;
+        long b = 0;
+        
+        long sum = 0;
+        for(long i=1;i<=n;i++){
+            a += i*i;
+            sum +=i;
+        }
+        sum = sum*sum;
+        
+        Console.WriteLine(sum-a);

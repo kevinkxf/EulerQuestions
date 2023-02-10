@@ -1,0 +1,23 @@
+long a = 6857;//600851475143; 71,839,1471,6857
+        // 1 
+        //
+        //
+        // 1
+        int factor = 2;
+        int lasfactor =2;
+        List<int> la = new List<int>();
+        while(a>1){
+            if(a%factor==0){
+                la.Add(factor);
+                lasfactor = factor;
+                a = a/factor;
+                while(a%factor==0){
+                    a = a/factor;
+                }
+            }
+            else{
+                factor++;
+            }
+        }
+        Console.WriteLine(a);
+        Console.WriteLine(String.Join(",", la));

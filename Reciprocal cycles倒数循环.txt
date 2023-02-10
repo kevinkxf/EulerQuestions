@@ -1,0 +1,37 @@
+int maxLoopLength = 0;
+        int nFound = 0;
+        for(int n=1;n<=1000;n++){
+            int mod = 10;
+            bool jump = false;
+            List<int> modList = new List<int>();
+            //Console.WriteLine("Deal with " + n.ToString());
+            while(true){
+                mod = mod%n;
+                //Console.WriteLine(mod);
+                if(modList.Contains(mod)){
+                    int loopLength = modList.Count - modList.IndexOf(mod);
+                    if(loopLength>maxLoopLength){
+                        maxLoopLength = loopLength;
+                        nFound = n;
+                    }
+                    jump = true;
+                    break;
+
+                }else{
+                    modList.Add(mod);
+                }
+                if(mod==0){
+                    
+                    jump = true;
+                    break;
+                }
+                mod *=10;
+            }
+            //Console.WriteLine(n.ToString()+"------------------------------");
+            if(jump){
+                continue;
+            }
+            
+        }
+        Console.WriteLine(nFound);
+        Console.WriteLine(maxLoopLength);
